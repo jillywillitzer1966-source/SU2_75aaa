@@ -445,3 +445,33 @@ GIT_SSH_COMMAND='ssh -o BatchMode=yes -o StrictHostKeyChecking=accept-new -o Con
 ```
 
 The command completed without authentication failure, which indicates that SSH access from this server to the target repository is available.
+
+### When you may still want `conda activate su2_deto`
+Normally this is **not required** for SU2 build/run/Slurm workflows, because:
+
+```bash
+source /home/jmyang/detonationFoam/env_su2_deto.sh
+```
+
+already prepares the needed environment.
+
+Manual activation is still recommended when you want to use the Python environment **interactively**, for example:
+
+- run Python scripts directly in the terminal;
+- check `python --version` or `which python` inside the SU2 workflow environment;
+- run custom post-processing scripts that depend on the `su2_deto` Conda Python stack;
+- use `pip`, `conda`, or inspect installed Python packages;
+- let an agent or helper script run Python-based case postprocessing from an interactive shell.
+
+In those situations, you may do:
+
+```bash
+conda activate su2_deto
+```
+
+But for the normal workflows below, this is still **not** required if you already sourced the standard wrapper:
+
+- direct `mpirun` SU2 runs;
+- `sbatch` / Slurm SU2 runs;
+- Meson/Ninja rebuild of `SU2_deto`;
+- basic `SU2_CFD -h` / `mpirun -np 2 SU2_CFD -h` checks.
