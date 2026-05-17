@@ -1,0 +1,87 @@
+<!-- 9-species 19-step H2/O2/N2 combustion mechanism (N2 inert third-body) -->
+<mechanism name="H2O2_9sp_19r">
+
+    <arrhenius_units A="mol,cm,s,K" E="kcal,mol,K" />
+
+    <reaction formula="H2+O2=HO2+H">
+        <arrhenius A="1.00E+14" n="0.00" T="28200.7" />
+    </reaction>
+
+    <reaction formula="H+O2=OH+O">
+        <arrhenius A="2.60E+14" n="0.00" T="8460.2" />
+    </reaction>
+
+    <reaction formula="H2+O=OH+H">
+        <arrhenius A="1.80E+10" n="1.00" T="4481.9" />
+    </reaction>
+
+    <reaction formula="H2+OH=H+H2O">
+        <arrhenius A="2.20E+13" n="0.00" T="2593.5" />
+    </reaction>
+
+    <reaction formula="OH+OH=O+H2O">
+        <arrhenius A="6.30E+12" n="0.00" T="548.9" />
+    </reaction>
+
+    <reaction formula="H+OH+M=H2O+M">
+        <arrhenius A="2.20E+22" n="-2.00" T="0.0" />
+        <M>H2O:6.0</M>
+    </reaction>
+
+    <reaction formula="H+H+M=H2+M">
+        <arrhenius A="6.40E+17" n="-1.00" T="0.0" />
+        <M>H2O:6.0, H2:2.0</M>
+    </reaction>
+
+    <reaction formula="H+O+M=OH+M">
+        <arrhenius A="6.00E+16" n="-0.60" T="0.0" />
+        <M>H2O:5.0</M>
+    </reaction>
+
+    <reaction formula="H+O2+M=HO2+M">
+        <arrhenius A="2.10E+15" n="0.00" T="-503.6" />
+        <M>H2O:16.0, H2:2.0</M>
+    </reaction>
+
+    <reaction formula="O+O+M=O2+M">
+        <arrhenius A="6.00E+13" n="0.00" T="-906.4" />
+    </reaction>
+
+    <reaction formula="HO2+H=OH+OH">
+        <arrhenius A="1.40E+14" n="0.00" T="543.9" />
+    </reaction>
+
+    <reaction formula="HO2+H=H2O+O">
+        <arrhenius A="1.00E+13" n="0.00" T="543.9" />
+    </reaction>
+
+    <reaction formula="HO2+O=O2+OH">
+        <arrhenius A="1.50E+13" n="0.00" T="478.4" />
+    </reaction>
+
+    <reaction formula="HO2+OH=H2O+O2">
+        <arrhenius A="8.00E+12" n="0.00" T="0.0" />
+    </reaction>
+
+    <reaction formula="HO2+HO2=H2O2+O2">
+        <arrhenius A="2.00E+12" n="0.00" T="0.0" />
+    </reaction>
+
+    <reaction formula="H+H2O2=H2+HO2">
+        <arrhenius A="1.40E+12" n="0.00" T="1812.9" />
+    </reaction>
+
+    <reaction formula="O+H2O2=OH+HO2">
+        <arrhenius A="1.40E+13" n="0.00" T="3223.0" />
+    </reaction>
+
+    <reaction formula="OH+H2O2=H2O+HO2">
+        <arrhenius A="6.10E+12" n="0.00" T="720.1" />
+    </reaction>
+
+    <reaction formula="H2O2+M=OH+OH+M">
+        <arrhenius A="1.20E+17" n="0.00" T="22913.0" />
+        <M>H2O:15.0</M>
+    </reaction>
+
+</mechanism>

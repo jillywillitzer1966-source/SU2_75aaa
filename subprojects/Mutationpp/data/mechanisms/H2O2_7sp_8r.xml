@@ -1,0 +1,38 @@
+<!-- 7-species 8-step H2/O2/N2 combustion mechanism (N2 inert third-body) -->
+<mechanism name="H2O2_7sp_8r">
+
+    <arrhenius_units A="mol,cm,s,K" E="kcal,mol,K" />
+
+    <reaction formula="H2+M=H+H+M">
+        <arrhenius A="5.50E+18" n="-1.00" T="26160.9" />
+    </reaction>
+
+    <reaction formula="O2+M=O+O+M">
+        <arrhenius A="7.20E+18" n="-1.00" T="29861.0" />
+    </reaction>
+
+    <reaction formula="H2O+M=H+OH+M">
+        <arrhenius A="5.20E+21" n="-1.50" T="29884.2" />
+    </reaction>
+
+    <reaction formula="OH+M=H+O+M">
+        <arrhenius A="8.50E+18" n="-1.00" T="25578.6" />
+    </reaction>
+
+    <reaction formula="H2O+O=OH+OH">
+        <arrhenius A="5.80E+13" n="0.00" T="4558.7" />
+    </reaction>
+
+    <reaction formula="H2O+H=H2+OH">
+        <arrhenius A="8.40E+13" n="0.00" T="5090.6" />
+    </reaction>
+
+    <reaction formula="O2+H=OH+O">
+        <arrhenius A="2.20E+14" n="0.00" T="4254.7" />
+    </reaction>
+
+    <reaction formula="H2+O=OH+H">
+        <arrhenius A="7.50E+13" n="0.00" T="2811.0" />
+    </reaction>
+
+</mechanism>

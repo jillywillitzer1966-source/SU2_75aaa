@@ -1,0 +1,116 @@
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.optrpt
+
+# Autoconf/Automake
+*.Po
+*.dirstamp
+*.log
+*.status
+autom4te.cache
+*.in
+compile
+config.guess
+config.sub
+configure
+depcomp
+missing
+install-sh
+aclocal.m4
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+
+# Python files
+*.pyc
+
+# SWIG compilation
+SU2_PY/pySU2/*.cxx
+SU2_PY/pySU2/*.h
+SU2_PY/pySU2/*.py
+
+# Mac files
+*.DS_Store
+*.xcuserdatad
+
+# Compiled Makefiles
+Makefile
+Makefile.in
+
+# Emacs temporary files
+*~
+
+# installed autotools
+externals/autotools/bin
+externals/autotools/include
+externals/autotools/share
+externals/autotools/lib
+externals/tecio/boost
+# Track vendored source subprojects on the server baseline repo.
+# Build outputs remain ignored under build/.
+subprojects/Mutationpp.zip
+#logs and errors
+*.log
+*.err
+
+# configuration sets
+SU2_AD/
+SU2_BASE/
+SU2_DIRECTDIFF/
+
+# ignore the bin/ directory
+bin/
+
+# ignore project settings from eclipse
+.project
+
+# ignore swap files
+*.swp
+
+TestData
+*.stl
+
+# Ignore output files if tests are run locally
+*.vtk
+*.vtu
+*.vtm
+*.pvsm
+*.ref
+*.plt
+*.szplt
+
+Mercurial
+.hg*
+
+# Ignore build folder
+./build/
+build/
+
+# ninja binary (build system)
+ninja
+
+# Ignore vscode folder
+.vscode/
+
+# Ignore SU2 pre-configuration timestamp created by preconfigure.py
+su2preconfig.timestamp
+
+# Clangd server files
+.cache
+
+# Server/local install tree
+install/
+
+# Python cache directories
+__pycache__/
+
+# Large server-side configure log
+build_audit/meson-log.txt

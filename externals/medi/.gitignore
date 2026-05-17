@@ -1,0 +1,16 @@
+.idea
+CoDi
+MeDiPack.cflags
+MeDiPack.config
+MeDiPack.creator
+MeDiPack.creator.user
+MeDiPack.creator.user.*
+MeDiPack.cxxflags
+MeDiPack.files
+MeDiPack.includes
+setup_env.txt
+tests/build
+tests/results
+reports
+updateDocumentation.sh
+run.gdb

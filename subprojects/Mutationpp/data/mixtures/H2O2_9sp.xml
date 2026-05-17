@@ -1,0 +1,12 @@
+<!-- 9-species H2/O2/N2 combustion mixture with 19-step mechanism -->
+<mixture mechanism="H2O2_9sp_19r" thermo_db="NASA-9">
+
+    <species>
+        H2 O2 H O OH HO2 H2O H2O2 N2
+    </species>
+
+    <element_compositions default="h2_air_stoich">
+        <composition name="h2_air_stoich"> H:2.0, O:1.0, N:7.52 </composition>
+    </element_compositions>
+
+</mixture>
