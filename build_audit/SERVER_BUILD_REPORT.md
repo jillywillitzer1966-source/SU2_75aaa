@@ -475,3 +475,34 @@ But for the normal workflows below, this is still **not** required if you alread
 - `sbatch` / Slurm SU2 runs;
 - Meson/Ninja rebuild of `SU2_deto`;
 - basic `SU2_CFD -h` / `mpirun -np 2 SU2_CFD -h` checks.
+
+## GitHub Publishing Status (Final)
+
+The server-side `SU2_deto` repository has now been pushed successfully to:
+
+- `git@github.com:jillywillitzer1966-source/SU2_75aaa.git`
+
+### Final branch arrangement
+The local branch was renamed to match the remote branch name:
+
+- local branch: `main`
+- remote branch: `origin/main`
+
+The local repository now tracks GitHub directly:
+
+```bash
+cd /home/jmyang/detonationFoam/SU2_deto
+git branch -vv
+git status
+git diff
+git push
+git pull --ff-only
+```
+
+### Result
+The server copy is now in a practical steady state for future agent-assisted development:
+
+- source changes are visible through `git diff`;
+- local commits are preserved in `/home/jmyang/detonationFoam/SU2_deto`;
+- GitHub push/pull is available through the configured SSH access;
+- future report, script, and source edits can be inspected and synchronized normally.
