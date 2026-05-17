@@ -313,3 +313,135 @@ sbatch --ntasks-per-node=8 /home/jmyang/detonationFoam/sub_deto.sh your_case.cfg
 ```
 
 This preserves the same Intel MPI + Cantera + SUNDIALS + Mutation++ environment while scaling the rank count.
+
+## Standard Daily Workflow (Simple Version)
+
+### One command you should always run first in a new terminal
+For normal daily use, the standard entry point is:
+
+```bash
+source /home/jmyang/detonationFoam/env_su2_deto.sh
+```
+
+This is the recommended **single** setup step after opening a new terminal.
+
+You do **not** need to separately run both of the following every time:
+
+- `module load mpi/2021.16`
+- `conda activate su2_deto`
+
+The environment wrapper already prepares the required MPI, Python, Cantera, SUNDIALS, and Mutation++ runtime/build paths.
+
+### What the environment wrapper provides
+After sourcing `env_su2_deto.sh`, the session is prepared with:
+
+- Intel MPI runtime and wrapper compiler paths
+- the `su2_deto` Python environment on `PATH`
+- `SU2_HOME`
+- `SU2_RUN`
+- `CANTERA_ROOT`
+- `SUNDIALS_ROOT`
+- `LD_LIBRARY_PATH`
+- `PKG_CONFIG_PATH`
+- `CMAKE_PREFIX_PATH`
+- `MPP_DATA_DIRECTORY`
+- `CC` / `CXX` set to Intel MPI wrappers
+
+## Standard Development / Run Procedures
+
+### A. Open a new terminal and prepare the environment
+```bash
+cd /home/jmyang/detonationFoam
+source /home/jmyang/detonationFoam/env_su2_deto.sh
+```
+
+### B. Run a case directly with `mpirun`
+```bash
+source /home/jmyang/detonationFoam/env_su2_deto.sh
+cd /path/to/case_directory
+mpirun -np 2 SU2_CFD your_case.cfg
+```
+
+To use more ranks:
+```bash
+mpirun -np 8 SU2_CFD your_case.cfg
+```
+
+### C. Run a case through Slurm
+```bash
+cd /path/to/case_directory
+sbatch /home/jmyang/detonationFoam/sub_deto.sh your_case.cfg
+```
+
+Or request more ranks at submit time:
+```bash
+sbatch --ntasks-per-node=8 /home/jmyang/detonationFoam/sub_deto.sh your_case.cfg
+```
+
+### D. Rebuild SU2_deto
+```bash
+source /home/jmyang/detonationFoam/env_su2_deto.sh
+cd /home/jmyang/detonationFoam/SU2_deto
+
+rm -rf build install
+./meson.py setup build \
+  -Denable-pywrapper=true \
+  -Denable-mpp=true \
+  -Denable-sundials=true \
+  -Dsundials_root=$SUNDIALS_ROOT \
+  -Denable-cantera=true \
+  -Dcantera_root=$CANTERA_ROOT \
+  -Dcustom-mpi=true \
+  --prefix=$PWD/install
+
+./ninja -C build install
+```
+
+### E. Quick verification after rebuild
+```bash
+source /home/jmyang/detonationFoam/env_su2_deto.sh
+which SU2_CFD
+SU2_CFD -h | head -20
+mpirun -np 2 SU2_CFD -h | head -20
+```
+
+## Git / GitHub Workflow on the Server
+
+### Server-side git baseline
+A usable git repository now exists inside:
+
+- `/home/jmyang/detonationFoam/SU2_deto`
+
+This means future source changes can be inspected with:
+
+```bash
+cd /home/jmyang/detonationFoam/SU2_deto
+git status
+git diff
+git log --oneline -5
+```
+
+### Recommended workflow before and after edits
+```bash
+cd /home/jmyang/detonationFoam/SU2_deto
+git status
+git diff
+# make changes
+git status
+git diff
+```
+
+### GitHub push target
+Target repository provided by the user:
+
+- `git@github.com:jillywillitzer1966-source/SU2_75aaa.git`
+
+### GitHub access test
+A read-only access test succeeded with:
+
+```bash
+GIT_SSH_COMMAND='ssh -o BatchMode=yes -o StrictHostKeyChecking=accept-new -o ConnectTimeout=8' \
+  git ls-remote git@github.com:jillywillitzer1966-source/SU2_75aaa.git HEAD
+```
+
+The command completed without authentication failure, which indicates that SSH access from this server to the target repository is available.
